@@ -1,46 +1,28 @@
-﻿using System;
+using System;
 
-
-class Calculator
+class CountEvenOdd
 {
-    static void Main()
-    {
-        double num1, num2, result;
-        char operations;
-        Console.WriteLine("Enter first number :");
-        num1 = Convert.ToDouble(Console.ReadLine());
-        Console.WriteLine("Enter second number :");
+   static void Main()
+   {
+       Console.WriteLine("Enter 10 numbers separated by spaces:");
+       string input = Console.ReadLine();           // Read the full line
+       string[] parts = input.Split(' ');           // Split by spaces
 
-        num2 = Convert.ToDouble(Console.ReadLine());
-        Console.WriteLine("\n Enter the Operation");
-        Console.WriteLine("\n + : Addition");
-        Console.WriteLine("\n - : Subtraction");
-        Console.WriteLine("\n * : Multiplication");
-        Console.WriteLine("\n / : Division");
-        Console.WriteLine("\n  Enter Your choice :");
+       int evenCount = 0, oddCount = 0;
 
-        operations = Convert.ToChar(Console.ReadLine());
-        switch (operations)
-        {
-            case '+':
-                result = num1 + num2;
-                Console.WriteLine($"Result: {num1} + {num2} = {result}");
-                break;
+       for (int i = 0; i < parts.Length; i++)       // Loop through all numbers
+       {
+           int num = Convert.ToInt32(parts[i]);     // Convert each part to an integer
 
-            case '-':
-                result = num1 - num2;
-                Console.WriteLine($"Result: {num1} - {num2} = {result}");
-                break;
+           if (num % 2 == 0)
+               evenCount++;
+           else
+               oddCount++;
+       }
 
-            case '*':
-                result = num1 * num2;
-                Console.WriteLine($"Result: {num1} * {num2} = {result}");
-                break;
-
-            case '/':
-                result = num1 / num2;
-                Console.WriteLine($"Result: {num1} / {num2} = {result}");
-                break;
-        }
-    }
+       Console.WriteLine("\nTotal Even numbers: " + evenCount);
+       Console.WriteLine("Total Odd numbers: " + oddCount);
+   }
 }
+
+
